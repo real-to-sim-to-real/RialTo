@@ -20,418 +20,94 @@
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 
     });
+    function updatesingletaskreal() {
+      var task = document.getElementById("single-menu-tasks-single-task-real").value;
+      var rand = document.getElementById("single-menu-robustness-single-task-real").value;
+
+      console.log("gpt", task, rand)
+
+      var video = document.getElementById("single-task-result-video-single-task-rialto");
+      map_task = {
+        "mug_on_shelf": "mugandshelf",
+        "book_on_shelf": "booknshelf",
+        "plate_on_rack": "dishinrack",
+        "open_kitchen_toaster": "kitchentoaster",
+        "cup_in_trash": "cupntrash",
+        "open_drawer": "drawer",
+        "open_cabinet": "cabinet",
+        "plate_on_rack_wild": "dishsinklab",
+
+      }
+      map_rand = {
+        "disturbances": "disturbances",
+        "distractors": "distractors",
+        "object_pose": "rand",
+
+      }
+    
+      video.src = "materials/videos/" + map_task[task] +  map_rand[rand] + ".mp4";
+      console.log(video.src)
+      video.play();
+
+      var video = document.getElementById("single-task-result-video-single-task-imitation-learning");
+
+      video.src = "materials/videos/" + map_task[task] +  map_rand[rand] + "il" + ".mp4";
+      console.log(video.src)
+      video.play();
+    }
+
   </script>
   
-<style type="text/css">
-body {
-    font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    font-size: 17px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-@media screen and (min-width: 980px){
-    body {
-        width: 980px;
-    }
-}
-
-
-h1 {
-    font-weight:300;
-    line-height: 1.15em;
-}
-
-h2 {
-    font-size: 1.75em;
-}
-a:link,a:visited {
-    color: #5364cc;
-    text-decoration: none;
-}
-a:hover {
-    color: #208799;
-}
-h1 {
-    text-align: center;
-}
-h2,h3 {
-    text-align: left;
-}
-
-h1 {
-    font-size: 40px;
-    font-weight: 500;
-}
-h2 {
-    font-weight: 400;
-    margin: 16px 0px 4px 0px;
-}
-h3 {
-    font-weight: 600;
-    margin: 16px 0px 4px 0px;
-}
-
-.paper-title {
-    padding: 1px 0px 1px 0px;
-}
-section {
-    margin: 32px 0px 32px 0px;
-    text-align: justify;
-    clear: both;
-}
-.col-5 {
-     width: 20%;
-     float: left;
-}
-
-.move-down {
-    margin-top:1.2cm;
-}
-
-.col-4 {
-     width: 25%;
-     float: left;
-}
-.col-3 {
-     width: 33%;
-     float: left;
-}
-.col-2 {
-     width: 50%;
-     float: left;
-}
-.col-1 {
-     width: 100%;
-     float: left;
-}
-
-.author-row, .affil-row {
-    font-size: 26px;
-}
-
-.author-row-new { 
-    text-align: center; 
-}
-
-.author-row-new a {
-    display: inline-block;
-    font-size: 20px;
-    padding: 4px;
-}
-
-.author-row-new sup {
-    color: #313436;
-    font-size: 12px;
-}
-
-.affiliations-new {
-    font-size: 18px;
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
-.row {
-    margin: 16px 0px 16px 0px;
-}
-.authors {
-    font-size: 26px;
-}
-.affiliatons {
-    font-size: 18px;
-}
-.affil-row {
-    margin-top: 18px;
-}
-.teaser {
-    max-width: 100%;
-}
-.text-center {
-    text-align: center;  
-}
-.screenshot {
-    width: 256px;
-    border: 1px solid #ddd;
-}
-.screenshot-el {
-    margin-bottom: 16px;
-}
-hr {
-    height: 1px;
-    border: 0; 
-    border-top: 1px solid #ddd;
-    margin: 0;
-}
-.material-icons {
-    vertical-align: -6px;
-}
-p {
-    line-height: 1.25em;
-}
-.caption {
-    font-size: 16px;
-    color: #666;
-    margin-top: 4px;
-    margin-bottom: 10px;
-	text-align: left;
-}
-
-
-video {
-    display: block;
-    margin: auto;
-}
-
-
-figure {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-#bibtex pre {
-    font-size: 14px;
-    background-color: #eee;
-    padding: 16px;
-}
-.blue {
-    color: #2c82c9;
-    font-weight: bold;
-}
-.orange {
-    color: #d35400;
-    font-weight: bold;
-}
-.flex-row {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.paper-btn-coming-soon {
-    position: relative; 
-    top: 0;
-    left: 0;
-}
-
-.coming-soon {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-}
-
-.center {
-  margin-left: 10.0%;
-  margin-right: 10.0%;
-}
-
-.paper-btn {
-  position: relative;
-  text-align: center;
-
-  display: inline-block;
-  margin: 8px;
-  padding: 8px 8px;
-
-  border-width: 0;
-  outline: none;
-  border-radius: 2px;
-  
-  background-color: #5364cc;
-  color: white !important;
-  font-size: 20px;
-  width: 100px;
-  font-weight: 600;
-}
-.paper-btn-parent {
-    display: flex;
-    justify-content: center;
-    margin: 16px 0px;
-}
-
-.paper-btn:hover {
-    opacity: 0.85;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-.venue {
-    font-size: 23px;
-}
-
-.topnav {
-    background-color: #EEEEEE;
-    overflow: hidden;
-}
-
-.topnav div {
-    max-width: 1070px;
-    margin: 0 auto;
-}
-
-.topnav a {
-    display: inline-block;
-    color: black;
-    text-align: center;
-    vertical-align: middle;
-    padding: 16px 16px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.topnav img {
-    padding: 2px 0px;
-    width: 100%;
-    margin: 0.2em 0px 0.3em 0px;
-    vertical-align: middle;
-}
-
-pre {
-    font-size: 0.9em;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    border-radius: 3px;
-    background-color: rgb(235, 235, 235);
-    overflow-x: auto;
-}
-
-.download-thumb {
-    display: flex;
-}
-
-@media only screen and (max-width: 620px) {
-    .download-thumb {
-        display: none;
-    }
-}
-
-.paper-stuff {
-    width: 50%;
-    font-size: 20px;
-}
-
-@media only screen and (max-width: 620px) {
-    .paper-stuff {
-        width: 100%;
-    }
-}
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  text-align: center;
-  float: left;
-  width: 16.666%;
-  padding: 5px;
-}
-.column3 {
-  text-align: center;
-  float: left;
-  width: 33.333%;
-  padding: 5px;
-}
-.column4 {
-  text-align: center;
-  float: left;
-  width: 50%;
-  padding: 5px;
-}
-.column5 {
-  text-align: center;
-  float: left;
-  width: 20%;
-  padding: 5px;
-}
-.column10 {
-  text-align: center;
-  float: left;
-  width: 10%;
-  padding: 5px;
-}
-.border-right {
-    border-right: 1px solid black;
-}
-.border-bottom{
-    border-bottom: 1px solid black;
-}
-
-
-.row-center {
-    margin: 16px 0px 16px 0px;
-    text-align: center;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-.figure-img {
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-
-
-
-
-
-
-
-.rounded-circle {
-  border-radius: 50% !important;
-}
-
-
-
-
-
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 500px) {
-  .column {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 500px) {
-  .column3 {
-    width: 100%;
-  }
-}
-
-</style>
 <link rel="stylesheet" href="bootstrap-grid.css">
 
 <script type="text/javascript" src="../js/hidebib.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
     <head>
-        <title> Breadcrumbs to the Goal: Goal-Conditioned Exploration from Human-in-the-Loop Feedback</title>
+        <title> Reconciling Reality Through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta property="og:description" content="Breadcrumbs to the Goal: Goal-Conditioned Exploration from Human-in-the-Loop Feedback"/>
+        <meta property="og:description" content="Reconciling Reality Through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation"/>
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:creator" content="@marceltornev">
-        <meta name="twitter:title" content="Breadcrumbs to the Goal: Goal-Conditioned Exploration from Human-in-the-Loop Feedback">
+        <meta name="twitter:title" content="Reconciling Reality Through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation">
         <meta name="twitter:description" content="">
         <meta name="twitter:image" content="">
+
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+            dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-PYVRSFMDRL');
+        </script>
+
+        <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+                rel="stylesheet">
+
+        <link rel="stylesheet" href="./static/css/bulma.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="./static/css/index.css">
+        <link rel="icon" href="./static/images/favicon.svg">
+        <link rel="stylesheet" href="style.css">
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+        <script src="./static/js/bulma-carousel.min.js"></script>
+        <script src="./static/js/bulma-slider.min.js"></script>
+        <script src="./static/js/index.js"></script>
+
     </head>
 
  <body>
@@ -439,303 +115,463 @@ pre {
 
 <div class="container">
     <div class="paper-title">
+        <br><br>
     <h1> 
-        Breadcrumbs to the Goal: Goal-Conditioned Exploration from Human-in-the-Loop Feedback
+        Reconciling Reality Through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation
     </div>
 
     <div id="authors">
         <center>
             <div class="author-row-new">
-                <a href="https://marceltorne.github.io/">Marcel Torne<sup>1,2</sup></a>,
-                <a href="https://www.linkedin.com/in/max-balsells">Max Balsells<sup>3</sup></a>,
-                <a href="">Zihan Wang<sup>3</sup></a>,
-                <a href="">Samedh Desai<sup>3</sup></a>,
+                <a href="https://marceltorne.github.io/">Marcel Torne<sup>1</sup></a>,
+                <a href="https://anthonysimeonov.github.io">Anthony Simeonov<sup>1</sup></a>,
+                <a href="https://supersglzc.github.io">Zechu Li<sup>1,3</sup></a>,
+                <a href="">April Chan<sup>1</sup></a>,
                 <a href="https://taochenshh.github.io">Tao Chen<sup>1</sup></a>,
-                <a href="https://people.eecs.berkeley.edu/~pulkitag/">Pulkit Agrawal<sup>1</sup></a>,
-                <a href="https://abhishekunique.github.io">Abhishek Gupta<sup>3</sup></a>
+                <a href="https://abhishekunique.github.io">Abhishek Gupta<sup>2*</sup></a>,
+                <a href="https://people.eecs.berkeley.edu/~pulkitag/">Pulkit Agrawal<sup>1*</sup></a>
+
             </div>
         </center>
         <center>
         <div class="affiliations">
             <span><sup>1</sup> Massachusetts Institute of Technology </span>
-            <span><sup>2</sup> Harvard University</span>
-            <span><sup>3</sup> University of Washington</span>
+            <span><sup>2</sup> University of Washington</span>
+            <span><sup>3</sup> TU Darmstadt</span>
         </div>
-
+        <div class="affiliations">
+          <span><sup>*</sup> Equal advising </span>
+      </div>
+<!-- 
         <div class="affil-row">
-            <div class="venue text-center"><b>NeurIPS 2023 </b></div>
-        </div>
+            <div class="venue text-center"><b>RSS 2024 </b></div>
+        </div> -->
 
         </center>
 
         <div style="clear: both">
             <div class="paper-btn-parent">
-            <a class="paper-btn" href="https://arxiv.org/abs/2307.11049">
+            <a class="paper-btn" href="TODO">
                 <span class="material-icons"> description </span> 
                  Paper
             </a>
-            <a class="paper-btn" href="https://github.com/Improbable-AI/human-guided-exploration">
+            <a class="paper-btn" href="TODO">
                 <span class="material-icons"> code </span>
-                Code
+                Code (coming soon)
             </a>
-            <a class="paper-btn" href="https://recorder-v3.slideslive.com/?share=88820&s=2fddd0c8-e26a-41cc-8de9-9e8e2ef2001e"  data-toggle="tooltip" title="Use Chrome to watch the video">
+            <a class="paper-btn" href="TODO">
+                <span class="material-icons"> link </span>
+                GUI (coming soon) 
+            </a>
+            <!-- <a class="paper-btn" href="https://recorder-v3.slideslive.com/?share=88820&s=2fddd0c8-e26a-41cc-8de9-9e8e2ef2001e"  data-toggle="tooltip" title="Use Chrome to watch the video">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
                     <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>
                     <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
                     <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
                   </svg>
                 Talk
-                </a>
+                </a> -->
 
                   
             </div>
         </div>
     </div>
-    <section id="teaser-image">
-        <center>
-            <figure>
-                <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                    <source src="materials/huge_teaser_v6_short.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </figure>
+    <div class="columns is-centered">
+      <div class="column">
+          <video id="method-video"
+          muted
+          autoplay
+          loop
 
-        </center>
-    </section>
+          width="80%">
+          <source src="materials/videos/simvsrealoverview.mp4"
+          type="video/mp4">
+          </video>
+      </div>
+      </div>
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="publication-video">
+            <iframe src="https://youtu.be/H0TQCbTSGVY?rel=0&amp;showinfo=0"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <h2 class="subtitle has-text-centered">
+            <b>RialTo</b> robustifies policies originally trained from real-world data in the simulation leveraging 3D reconstruction techniques to transfer the real-world scene to the simulator.
+          </h2>
+        </div>
+      </div>
+      <!--/ Paper video. -->
     
-    <section id="results-image">
-        <center>
-            <figure>
-                <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                    <source src="materials/collage_tasks.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </figure>
+      <div class="columns is-centered">
+        <div class="column">
+            <video id="method-video"
+            muted
+            autoplay
+            loop
 
-        </center>
-    </section>
+            width="80%">
+            <source src="materials/videos/teaservideorialto.mp4"
+            type="video/mp4">
+            </video>
+        </div>
+        </div>
 
+    <hr>
 
-    
-    <section id="abstract"/>
-        <h2>Abstract</h2>
-        <div class="flex-row">
+    <div class="columns is-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div id="abstract" class="flex-row">
             <p>
-                Exploration and reward specification are fundamental and intertwined challenges for reinforcement learning. Solving sequential decision making tasks with a non-trivial element of exploration requires either specifying carefully designed reward functions or relying on indiscriminate, novelty seeking exploration bonuses. Human supervisors can provide effective guidance in the loop to direct the exploration process, but prior methods to leverage this guidance require constant synchronous high-quality human feedback, which is expensive and impractical to obtain. In this work, we propose a technique - Human-Guided Exploration (HuGE), that is able to leverage low-quality feedback from non-expert users, which is infrequent, asynchronous and noisy, to guide exploration for reinforcement learning, without requiring careful reward specification. The key idea is to separate the challenges of directed exploration and policy learning - human feedback is used to direct exploration, while self-supervised policy learning is used to independently learn unbiased behaviors from the collected data. We show that this procedure can leverage noisy, asynchronous human feedback to learn tasks with no hand-crafted reward design or exploration bonuses. We show that \Method is able to learn a variety of challenging multi-stage robotic navigation and manipulation tasks in simulation using crowdsourced feedback from non-expert users. Moreover, this paradigm can be scaled to learning directly on real-world robots.
+                Imitation learning methods need significant human supervision to learn policies robust to changes in object poses, 
+                physical disturbances, and visual distractors. Reinforcement learning, on the other hand, can explore the environment 
+                autonomously to learn robust behaviors but may require impractical amounts of unsafe real-world data collection. 
+                To learn performant, robust policies without the burden of unsafe real-world data collection or extensive human supervision, 
+                we propose <b>RialTo</b>, a new system for robustifying real-world imitation learning policies via reinforcement learning in 
+                "digital twin" simulation environments constructed on the fly from small amounts of real-world data. To enable this 
+                real-to-sim-to-real pipeline, <b>RialTo</b> proposes an easy-to-use interface for quickly scanning and constructing digital 
+                twins of real-world environments. We also introduce a novel "inverse distillation" procedure for bringing real-world 
+                demonstrations into simulated environments for efficient fine-tuning, with minimal human intervention and engineering required. 
+                We evaluate <b>RialTo</b> across a variety of robotic manipulation problems in the real world, such as robustly stacking dishes 
+                on a rack, placing books on a shelf and four other tasks. <b>RialTo</b> increases (over 67%) in policy robustness without 
+                requiring extensive human data collection. 
             </p>
         </div>
-    </section>
-    <section id="method"/>
-        <hr>
-        <h2>Method</h2>
-            <center>
-                <section id="teaser-image">
-                    <center>
-                        <figure>
-                            <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                                <source src="materials/huge_detailed++6.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </figure>
-            
-                    </center>
-                </section>
-            </center>
-            <!--
-                <h3>Goal Selector Learning from Human Preferences</h3>
-                        <div class="flex-row">
-                            
-                            <p> 
-                                Existing diffusion models are often trained on massive datasets with a vast amounts of computational resources. In this paper, we explore and present tools on how we may utilize probabilistic composition of as an algebra to repurpose diffusion models, <b>without any finetuning</b>, for variety of downstream tasks.  
-                                <br>
-                                <br>
-                                Consider two probability distributions $q^1(x)$ and $q^2(x)$, each represented with a different diffusion model.  Can we draw samples from the product distribution $q^{\textup{prod}}(x) \propto q^1(x)q^2(x)$ specified by each diffusion model? One potential solution is to note that the diffusion process encodes the noisy gradients of each distribution, letting us use the <a href="https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/">sum of the scores of each diffusion process</a> to compose these models. While this approach can be effective, it is not completely mathematically accurate. To correctly sample from a reverse diffusion corresponding to $q^{\textup{prod}}(x)$, at each noise timestep $t$, we must compute the score:
-                                \[ \nabla_{x}\log \tilde{q}_{t}^{\textup{ prod}}(x_t) = \nabla_x\log  \left(\int
-                dx_{0}
-                q^{1}(x_{0})q^2(x_{0})~ q(x_t|x_{0})\right).\]
-                                Directly summing up the predicted scores of each separate diffusion model instead gives us the score:
-                                \[ \nabla_{x}\log q_{t}^{\textup{prod}}(x_t)
-                = 
-                \nabla_{x}\log  \left(\int dx_0 q^1(x_0)q(x_t|x_0)\right)+\nabla_{x}\log  \left(\int dx_0 q^2(x_0)q(x_t|x_0)\right).\]
-                                When the $t > 0$, the above expressions are not equal, and thus sample from the incorrect reverse diffusion process for $q^{\textup{prod}}(x)$. To address this theoretical issue, we propose two methodological contributions to properly sample across a set of different compositions of diffusion models (see our paper for analysis of why other forms of composition fail):
-                            </p>
-                            <p>
-                                <b>Sampling from Composed Diffusion Models using Annealed MCMC:</b> While the score estimate $\nabla_{x}\log q_{t}^{\textup{prod}}(x_t)$ does not correspond to the correct score estimate necessary to sample from the reverse diffusion process for $q_{t}^{\textup{prod}}(x_t)$, it does define a unnormalized probability distribution (EBM) at timestep t. The sequence of score estimates across different time points can then be seen as defining an annealed sequence of distributions starting from Gaussian
-                noise and evolving to our desired distribution $q_{t}^{\textup{prod}}(x_t)$.
-                                Thus, we may still sample from $q_{t}^{\textup{prod}}(x_t)$ using <b>Annealed MCMC</b> procedure, where we initialize a sample from
-                                Gaussian noise, and draw samples sequentially across different intermediate distributions by running multiple steps of MCMC
-                                sampling initialized from samples from the previous distribution. 
-                            </p>
-                            <p>
-                                <b>Energy Based Diffusion Parameterization:</b> In practice, MCMC sampling does not correctly sample from underlying distribution without a Metropolis Adjustment step. With the typical score parameterization of diffusion models,
-                                this is not possible, as there is no unnormalized density associated with the score field. Instead, we propose
-                                to use an energy based parameterization of diffusion model, where at each timestep, our neural network predicts an <b>scalar energy value for each data point</b> and the utilizes the gradient of the energy with respect to the input as the score for the diffusion process. The predicted energy gives us an <b>unnormalized estimate of
-                                the probability density</b>, enabling us to use Metropolis Adjustment in sampling. We further show that
-                                the unnormalized estimate of the density enables us to do additional compositions with a diffusion model.
-                            </p>
-                            <p>
-                                Below, we demonstrate results illustrating how we may use the above tools to re-purpose diffusion models in a variety of different settings. 
-                            </p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="columns is-centered">
+        <div class="column">
+          <h2 class="title is-3"><b>RialTo</b> learns policies robust policies to object poses, visual distractors and physical disturbances</h2>
+          <section class="hero is-light is-small">
+            <div class="hero-body">
+                <div class="container">
+                  <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-steve">
+                      <video poster="" id="steve" autoplay controls muted loop  height=300px>
+                        <source src="materials/videos/booknshelfrealtime.mp4"
+                                type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="item item-chair-tp">
+                      <video poster="" id="chair-tp" autoplay controls muted loop  height=300px>
+                        <source src="materials/videos/mugrealtime2.mp4"
+                                type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="item item-shiba">
+                      <video poster="" id="shiba" autoplay controls muted loop  height=300px>
+                        <source src="materials/videos/cabinetrealtime2.mp4"
+                                type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="item item-fullbody">
+                      <video poster="" id="fullbody" autoplay controls muted loop  height=300px>
+                        <source src="materials/videos/dishinrackdisturbances.mp4"
+                                type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="item item-blueshirt">
+                      <video poster="" id="blueshirt" autoplay controls muted loop  height=300px>
+                        <source src="materials/videos/drawerrealtime2.mp4"
+                                type="video/mp4">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+    </div>
+    <section id="overview-videos">
+        <div class="columns is-centered">
+            <div class="column">
+              <h2 class="title is-3"><b>RialTo</b> scales to in-the-wild environments</h2>
+              <section class="hero is-light is-small">
+                <div class="hero-body">
+                  <div class="container">
+                    <div id="results-carousel" class="carousel results-carousel">
+                      <div class="item item-steve">
+                        <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                          <source src="materials/videos/kitchendisturbances.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-chair-tp">
+                        <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+                          <source src="materials/videos/cupntrashreal.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-chair-tp">
+                        <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+                          <source src="materials/videos/dishsinklabrand.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-steve">
+                        <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                          <source src="materials/videos/kitchentoasterdistractors.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-steve">
+                        <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                          <source src="materials/videos/cupntrashrand.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        <div class="columns is-centered">
+            <div class="column">
+              <h2 class="title is-3"><b>RialTo</b> leverages digital twins of real-world scenes to fine-tune the policies</h2>
+              <section class="hero is-light is-small">
+                <div class="hero-body">
+                    <div class="container">
+                      <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item item-steve">
+                          <video poster="" id="steve" autoplay controls muted loop playsinline height=300px>
+                            <source src="materials/videos/kitchensim.mp4"
+                                    type="video/mp4">
+                          </video>
                         </div>
-            -->
+                        <div class="item item-chair-tp">
+                          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height=300px>
+                            <source src="materials/videos/cupntrashsim.mp4"
+                                    type="video/mp4">
+                          </video>
+                        </div>
+                        <div class="item item-blueshirt">
+                            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height=300px>
+                              <source src="materials/videos/dishinracksim.mp4"
+                                      type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item item-blueshirt">
+                            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height=300px>
+                              <source src="materials/videos/booknshelfsim.mp4"
+                                      type="video/mp4">
+                            </video>
+                          </div>
+                        <div class="item item-shiba">
+                          <video poster="" id="shiba" autoplay controls muted loop playsinline height=300px>
+                            <source src="materials/videos/drawersim.mp4"
+                                    type="video/mp4">
+                          </video>
+                        </div>
+                        <div class="item item-fullbody">
+                          <video poster="" id="fullbody" autoplay controls muted loop playsinline height=300px>
+                            <source src="materials/videos/cabinetsim.mp4"
+                                    type="video/mp4">
+                          </video>
+                        </div>
+                        <div class="item item-chair-tp">
+                          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height=300px>
+                            <source src="materials/videos/dishsinklabsim.mp4"
+                                    type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </section>
+            </div>
+        </div>
+       
         
     </section>
 
 
-    <section id="results">
-        <hr>
-        <h2>Real World Experiments</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_real_robot.png">
-            </a>
-            <p class="caption">
-                Accomplished goals at the end of 5 different evaluation episodes along training in the real world.
-            </p> <br>
-        </figure>
-        <h2>Simulation Experiments</h2>  
-            <figure>
-                <a>
-                    <img width="100%" src="materials/website_figures_inline.png">
-                </a>
-                <p class="caption">
-                    Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
-                </p> <br>
-            </figure>
-            <figure>
-                <a>
-                    <img width="100%" src="materials/website_figures_success_curves.png">
-                </a>
-                <p class="caption">
-                    Success curves of HuGE on the proposed benchmarks compared to the baselines. 
-                    HuGE outperforms the rest of the baselines, some of which cannot solve the environment, while converging to the oracle accuracy. 
-                    For those curves that are not visible, it means they never succeeded and hence are all at 0 (see D.9 in the paper for distance curves). 
-                    Note the lexa-like benchmark is only computed in the four rooms benchmark. The curves are the average of 4 runs, and the shaded region corresponds to the standard deviation. 
-                </p> <br>
-            </figure>
-            
+      <hr>
 
-        <h2>Crowdsourced Experiments</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_crowdsourcing.png">
-            </a>
-            <p class="caption">
-                <strong>left</strong>: Crowdsourcing experiment learning curves for the kitchen, <strong>middle</strong>: human annotators spanned 3 continents and 13 countries, <strong>right</strong>: screenshot of the interface for data collection.
-            </p> <br>
-        </figure>
+    <div class="columns is-centered">
+    <div class="column">
+        <h2 class="title is-3">Robustness Results</h2>
+        Task    
+        <div class="select is-small">     
+          <select id="single-menu-tasks-single-task-real" onchange="updatesingletaskreal()">
+    <option value="plate_on_rack">plate_on_rack</option>
+    <option value="mug_on_shelf" selected="selected">mug_on_shelf</option> 
+    <option value="book_on_shelf">book_on_shelf</option>        
+    <option value="open_kitchen_toaster">open_kitchen_toaster</option>
+    <option value="cup_in_trash">cup_in_trash</option>
+    <option value="open_drawer">open_drawer</option>
+    <option value="plate_on_rack_wild">plate_on_rack_wild</option>
+    
+          </select>
+        </div>
+        robustness to
+        <div class="select is-small">
+          <select id="single-menu-robustness-single-task-real" onchange="updatesingletaskreal()">
+          <option value="object_pose" >object_pose</option>
+          <option value="distractors">distractors</option>
+          <option value="disturbances" selected="selected">disturbances</option>
+          </select>
+        </div>
+        <div class="container  ">
+            <!-- Paper video. -->
+            <div class="columns is-centered has-text-centered">
+              <div class="column one-third"  width="30%">
+                <h3 class="title is-4">RialTo</h3>
         
-    </section> 
-    
-    <section id="robust_noise">
-        <hr>
-        <h2>Robustness to Learning from Noisy Human Feedback</h2>
-        <center>
-        <figure>
-            <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                <source src="materials/huge_explained_rl.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </figure>
+                <div class="columns">
+                  <div class="column has-text-centered">			
+                    <video id="single-task-result-video-single-task-rialto"
+                           controls
+                           muted
+                           autoplay
+                           loop
 
-    </section>
-
-    <section id="analysis">
-        <hr>
-        <h2>Analysis</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_analysis.png">
-            </a>
-            <p class="caption">
-                <strong>left</strong>: Learning a goal selector (<i>Ours</i>) needs on average 50% fewer labels than not (<i>DDL</i>) 
-                <strong>middle</strong>: As the noise in the feedback increases, so will the number of timesteps to succeed, however HuGE still finds a solution. 
-                <strong>right</strong>: HuGE is robust to noisy goal selectors since trajectories going to each mode will be sampled while if we ran RL the policy would become biased and fail. 
-                See Appendix E in the paper for more details.
-            </p> <br>
-        </figure>        
-        <hr>
-
-    </section> 
-
-    <!--
-    <section id="paper">
-
-        <h2>Team</h2>        
-        <div class="row">
-            <div class="column5">
-                <a href='https://marceltorne.github.io/'>
-                    <img  src=./materials/people/marcel.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                </a>
-                <p class=profname> Marcel Torne Villasevil </p>
-                <p class=institution>Harvard University, MIT</p>
-            </div>
-
-            <div class="column5">
-                <a href=''>
-                    <img  src=./materials/people/max.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                </a>
-                <p class=profname> Max Balsells i Pamies </p>
-                <p class=institution>University of Washington</p>
-            </div>
-
-            <div class="column5">
-                <a href='https://taochenshh.github.io'>
-                    <img  src=./materials/people/tao.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                </a>
-                <p class=profname> Tao Chen </p>
-                <p class=institution>MIT</p>
-            </div>
-            <div class="column5">
-                <a href='https://people.eecs.berkeley.edu/~pulkitag/'>
-                    <img  src=./materials/people/pulkit.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                </a>
-                <p class=profname> Pulkit Agrawal </p>
-                <p class=institution>MIT</p>
-            </div>
-
-
-
-            <center>
-                <div class="column0">
-                    <a href="https://abhishekunique.github.io">
-                        <img src=./materials/people/abhishek.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                    </a>
-                    <p class=profname> Abhishek Gupta </p>
-                    <p class=institution>University of Washington</p>
+                           width="80%">
+                      <source src="materials/videos/mugandshelfdisturbances.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-
-                <div class="column0">
-                    <a href='https://people.eecs.berkeley.edu/~pulkitag/'>
-                        <img  src=./materials/people/pulkit.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                    </a>
-                    <p class=profname> Pulkit Agrawal </p>
-                    <p class=institution>MIT</p>
+            </div>        
+              <div class="column is-half">
+                <h3 class="title is-4">Imitation Learning</h3>
+                <div class="columns">
+                  <div class="column has-text-centered">		
+                    <video  border-radius="10px" poster="" autoplay controls muted loop playsinline id="single-task-result-video-single-task-imitation-learning"
+                           controls
+                           muted
+                           autoplay
+                           loop
+                           width="80%">
+                      <source src="materials/videos/mugandshelfdisturbancesil.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-    
-                <div class="column0">
-                    <a href="https://abhishekunique.github.io">
-                        <img src=./materials/people/abhishek.png class="figure-img img-fluid rounded-circle" height=200px width=200px>
-                    </a>
-                    <p class=profname> Abhishek Gupta </p>
-                    <p class=institution>University of Washington</p>
+            </div>
+
+    </div>
+    <hr>
+
+    <div class="columns is-centered">
+        <div class="column">
+          <h2 class="title is-3">RialTo Overview</h2>
+          <h2 class="title is-4">1. Scan your target environment</h2>
+          <div class="columns is-centered">
+                <div class="column">
+                    <video id="method-video"
+                    controls
+                    muted
+                    autoplay
+                    loop
+
+                    width="80%">
+                    <source src="materials/videos/scanvideo.mp4"
+                    type="video/mp4">
+                    </video>
                 </div>
+            </div>
+          <h2 class="title is-4">2. Use RialTo's GUI to construct your environment</h2>
+          <div class="columns is-centered">
+            <div class="column">
+                <video id="method-video"
+                controls
+                muted
+                autoplay
+                loop
 
-            </center>
+                width="80%">
+                <source src="materials/videos/guivideo.mp4"
+                type="video/mp4">
+                </video>
+            </div>
+            </div>
+          <h2 class="title is-4">3. Collect demonstrations in the real world and transfer them to the simulation</h2>
 
-         </div>
+          <div class="columns is-centered">
+            <div class="column">
+                <video id="method-video"
+                controls
+                muted
+                autoplay
+                loop
 
-    </section>
+                width="80%">
+                <source src="materials/videos/inversedistillvideo.mp4"
+                type="video/mp4">
+                </video>
+            </div>
+            </div>
+          <h2 class="title is-4">4. RL fine-tuning in simulation</h2>
+          <div class="columns is-centered">
+            <div class="column">
+                <video id="method-video"
+                controls
+                muted
+                autoplay
+                loop
 
+                width="80%">
+                <source src="materials/videos/rlfinetuningvideo.mp4"
+                type="video/mp4">
+                </video>
+            </div>
+            </div>
 
+          <h2 class="title is-4">5. Teacher-student distillation with real-world demos co-training</h2>
+          <div class="columns is-centered">
+            <div class="column">
+                <video id="method-video"
+                controls
+                muted
+                autoplay
+                loop
 
-    -->
+                width="80%">
+                <source src="materials/videos/teacherstudentdistillationvideo.mp4"
+                type="video/mp4">
+                </video>
+            </div>
+            </div>
+        </div>
+      </div>
 
-   
-    <section>
-        This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
-    </section>
-    
+    <hr>
+       
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>@article{torne2024rialto,
+        author    = {Torne, Marcel 
+                    and Simeonov, Anthony 
+                    and Li, Zechu 
+                    and Chan, April 
+                    and Chen, Tao 
+                    and Gupta, Abhishek 
+                    and Agrawal, Pulkit},
+        title     = {Reconciling Reality Through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation},
+        journal   = {Arxiv},
+        year      = {2024},
+      }</code></pre>
+        </div>
+      </section>
+      
+      
+      <footer class="footer">
+          <div class="columns is-centered">
+              <div class="content">
+                <p>
+                    This webpage template was inspired from <a href='https://nv-tlabs.github.io/LION/'>LION</a>, <a href='https://nerfies.github.io'>Nerfies</a>, <a href='https://liruiw.github.io/policycomp/'>PoCo</a> and <a href='https://human-guided-exploration.github.io/HuGE/'>HuGE</a>.
+                </p>
+            </div>
+        </div>
+      </footer>
+      
 
 
 </div>
